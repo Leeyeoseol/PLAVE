@@ -4,144 +4,374 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PLLI's Home for PLAVE (플레이브 팬페이지)</title>
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8F4E3; color: #3F3F3A; }
     .font-poppins { font-family: 'Poppins', sans-serif; }
-    .hero-bg-image {
-      position: absolute;
-      inset: 0;
-      width: 100vw;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.18;
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    .member-card img {
-      border-radius: 1rem;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      transition: transform 0.2s;
-    }
-    .member-card img:hover {
-      transform: scale(1.05);
-    }
+    .cd-spin { animation: spin 12s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .modal-backdrop { transition: opacity 0.3s ease; }
+    .modal-content { transition: transform 0.3s ease, opacity 0.3s ease; }
+    .member-card { cursor: pointer; transition: all 0.3s ease-in-out; }
+    .member-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+    .hero-background { position: relative; overflow: hidden; min-height: 400px; }
+    .hero-bg-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .hero-background::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(63, 63, 58, 0.5); backdrop-filter: blur(2px) sepia(0.3); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; color: #F8F4E3; }
+    .a4-photo { aspect-ratio: 210 / 297; width: 100%; max-width: 595px; height: auto; }
+    @media (max-width: 640px) { .a4-photo { max-width: 100%; } }
+    .cd-frame { position: relative; width: 10rem; height: 10rem; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+    .cd-img { width: 100%; height: 100%; border-radius: 9999px; object-fit: cover; border: 4px solid #FCFBF4; box-sizing: border-box; z-index: 1; }
+    .cd-hole { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 2.2rem; height: 2.2rem; background: #F8F4E3; border-radius: 9999px; z-index: 2; box-shadow: 0 0 0 2px #D6CBB2; }
+    .member-animal { width: 48px; height: 48px; object-fit: contain; display: inline-block; margin-bottom: 0.75rem; background: transparent; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body>
-  <!-- 헤더 -->
-  <header class="bg-[#F8F4E3]/90 border-b border-[#E0DDD0] py-4 sticky top-0 z-50">
-    <div class="container mx-auto flex items-center justify-between px-6">
-      <div class="flex items-center gap-2">
-        <img src="assets/plave_logo.png" alt="PLAVE 로고" class="w-10 h-10" />
-        <span class="font-poppins font-bold text-xl tracking-tight">PLLI's Home</span>
-      </div>
-      <nav class="space-x-6 hidden md:block">
-        <a href="#about" class="hover:text-[#7D7B6B]">소개</a>
-        <a href="#members" class="hover:text-[#7D7B6B]">멤버</a>
-        <a href="#music" class="hover:text-[#7D7B6B]">음악</a>
-        <a href="#achievements" class="hover:text-[#7D7B6B]">성과</a>
-        <a href="#gallery" class="hover:text-[#7D7B6B]">갤러리</a>
-      </nav>
+
+<header class="bg-[#F8F4E3]/90 backdrop-blur-sm sticky top-0 z-50 shadow-lg border-b border-[#D6CBB2]">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2 md:space-x-4">
+      <a href="#" class="block">
+        <img src="src/플브-백.png" alt="PLAVE 로고" class="h-14 md:h-16 w-auto object-contain" style="max-width:160px;">
+      </a>
+      <h1 class="text-2xl md:text-3xl font-bold text-[#3F3F3A] font-poppins tracking-wider">
+        <a href="#" class="hover:text-[#A04F5E] transition duration-300">PL<span class="text-[#7EA0B7]">A</span>VE</a>
+      </h1>
     </div>
-  </header>
+    <nav class="hidden md:flex space-x-6 text-sm font-medium">
+      <a href="#members" class="text-[#3F3F3A] hover:text-[#7EA0B7] transition duration-300">멤버</a>
+      <a href="#music" class="text-[#3F3F3A] hover:text-[#7EA0B7] transition duration-300">음악 세계</a>
+      <a href="#achievements" class="text-[#3F3F3A] hover:text-[#7EA0B7] transition duration-300">활동 및 성과</a>
+      <a href="#for-plli" class="text-[#3F3F3A] hover:text-[#7EA0B7] transition duration-300">플리를 위하여</a>
+    </nav>
+    <button id="mobile-menu-button" class="md:hidden text-[#3F3F3A] focus:outline-none">
+      <i class="fas fa-bars fa-lg"></i>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-[#F8F4E3] border-t border-[#D6CBB2] shadow-md">
+    <a href="#members" class="mobile-menu-link block py-3 px-6 text-sm text-[#3F3F3A] hover:bg-[#E0B0A0]/20 hover:text-[#A04F5E] transition duration-300">멤버</a>
+    <a href="#music" class="mobile-menu-link block py-3 px-6 text-sm text-[#3F3F3A] hover:bg-[#E0B0A0]/20 hover:text-[#A04F5E] transition duration-300">음악 세계</a>
+    <a href="#achievements" class="mobile-menu-link block py-3 px-6 text-sm text-[#3F3F3A] hover:bg-[#E0B0A0]/20 hover:text-[#A04F5E] transition duration-300">활동 및 성과</a>
+    <a href="#for-plli" class="mobile-menu-link block py-3 px-6 text-sm text-[#3F3F3A] hover:bg-[#E0B0A0]/20 hover:text-[#A04F5E] transition duration-300">플리를 위하여</a>
+  </div>
+</header>
 
-  <!-- 메인 -->
-  <main class="container mx-auto px-6 py-12">
-    <!-- Hero Section -->
-    <section id="about" class="relative rounded-3xl overflow-hidden mb-16 min-h-[300px] flex items-center justify-center">
-      <img src="assets/240704_메디힐_배경화면.png" alt="배경" class="hero-bg-image" draggable="false" />
-      <div class="hero-content text-center py-16">
-        <h2 class="font-poppins text-4xl md:text-5xl font-bold mb-4">PLLI's Home for PLAVE</h2>
-        <p class="text-lg md:text-xl text-[#7D7B6B]">플레이브를 사랑하는 팬을 위한 비공식 팬페이지입니다.</p>
-      </div>
-    </section>
+<main class="container mx-auto px-6 py-12">
 
-    <!-- 멤버 섹션 -->
-    <section id="members" class="mb-16">
-      <h3 class="font-poppins text-2xl font-bold mb-8 text-center">멤버 소개</h3>
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-        <div class="member-card text-center">
-          <img src="assets/member_yejun.png" alt="여준" class="w-32 h-32 mx-auto mb-2" />
-          <div class="font-bold">여준</div>
-        </div>
-        <div class="member-card text-center">
-          <img src="assets/member_noa.png" alt="노아" class="w-32 h-32 mx-auto mb-2" />
-          <div class="font-bold">노아</div>
-        </div>
-        <div class="member-card text-center">
-          <img src="assets/member_bamby.png" alt="밤비" class="w-32 h-32 mx-auto mb-2" />
-          <div class="font-bold">밤비</div>
-        </div>
-        <div class="member-card text-center">
-          <img src="assets/member_eunho.png" alt="은호" class="w-32 h-32 mx-auto mb-2" />
-          <div class="font-bold">은호</div>
-        </div>
-        <div class="member-card text-center">
-          <img src="assets/member_hamin.png" alt="하민" class="w-32 h-32 mx-auto mb-2" />
-          <div class="font-bold">하민</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 음악 섹션 -->
-    <section id="music" class="mb-16">
-      <h3 class="font-poppins text-2xl font-bold mb-8 text-center">음악</h3>
-      <ul class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <li class="bg-[#EBE9D9] rounded-xl p-6 shadow">
-          <div class="font-bold mb-2">여섯 번째 트랙</div>
-          <div class="text-[#7D7B6B] mb-2">2024.06.XX 발매</div>
-          <a href="#" class="text-blue-600 hover:underline">음원 듣기</a>
-        </li>
-        <li class="bg-[#EBE9D9] rounded-xl p-6 shadow">
-          <div class="font-bold mb-2">여름, 첫 페이지</div>
-          <div class="text-[#7D7B6B] mb-2">2024.05.XX 발매</div>
-          <a href="#" class="text-blue-600 hover:underline">음원 듣기</a>
-        </li>
-        <li class="bg-[#EBE9D9] rounded-xl p-6 shadow">
-          <div class="font-bold mb-2">WAY 4 LUV</div>
-          <div class="text-[#7D7B6B] mb-2">2024.03.XX 발매</div>
-          <a href="#" class="text-blue-600 hover:underline">음원 듣기</a>
-        </li>
-      </ul>
-    </section>
-
-    <!-- 성과 섹션 -->
-    <section id="achievements" class="mb-16">
-      <h3 class="font-poppins text-2xl font-bold mb-8 text-center">주요 성과</h3>
-      <ul class="list-disc pl-6 space-y-2 text-lg">
-        <li>2024년 3월, 음악방송 첫 1위 달성</li>
-        <li>2024년 5월, 첫 단독 콘서트 전석 매진</li>
-        <li>2024년, 공식 팬클럽 10만명 돌파</li>
-      </ul>
-    </section>
-
-    <!-- 갤러리 섹션 -->
-    <section id="gallery" class="mb-16">
-      <h3 class="font-poppins text-2xl font-bold mb-8 text-center">갤러리</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <img src="assets/gallery1.jpg" alt="갤러리1" class="rounded-xl shadow" />
-        <img src="assets/gallery2.jpg" alt="갤러리2" class="rounded-xl shadow" />
-        <img src="assets/gallery3.jpg" alt="갤러리3" class="rounded-xl shadow" />
-        <img src="assets/gallery4.jpg" alt="갤러리4" class="rounded-xl shadow" />
-      </div>
-    </section>
-  </main>
-
-  <!-- 푸터 -->
-  <footer class="bg-[#EBE9D9] border-t border-[#E0DDD0]">
-    <div class="container mx-auto px-6 py-8 text-center text-[#6B6B61]">
-      <p>&copy; 2025 PLAVE Fan Page. All rights reserved.</p>
-      <p class="text-xs mt-2">이 페이지는 팬에 의해 제작되었으며, 비공식 페이지입니다.</p>
+  <section class="hero-background text-center my-16 rounded-3xl overflow-hidden p-0 md:p-0 shadow-xl" style="min-height:400px;">
+    <img src="src/240704_메디힐 배경화면.png" alt="배경" class="hero-bg-image" draggable="false" />
+    <div class="hero-content flex flex-col items-center justify-center min-h-[400px] py-16 md:py-24">
+      <h2 class="text-4xl md:text-6xl font-black font-poppins mb-4 drop-shadow-lg">WE ARE <span class="text-[#E0B0A0]">PLAVE!</span></h2>
+      <p class="text-lg md:text-xl text-[#F8F4E3] max-w-3xl mx-auto leading-relaxed drop-shadow-md">플레이브는 현실 세계의 팬 '플리(PLLI)'와 소통하기 위해 가상 세계 '카엘룸'에서 온 5명의 버추얼 아이돌입니다. 그들의 음악, 세계관, 그리고 끝나지 않는 이야기를 탐험해보세요.</p>
     </div>
-  </footer>
+  </section>
+  
+  <section id="members" class="my-24 scroll-mt-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#3F3F3A]">멤버 소개</h2>
+    <div id="member-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8"></div>
+  </section>
+
+  <section id="music" class="my-24 scroll-mt-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#3F3F3A]">음악 세계</h2>
+    <div class="bg-[#FCFBF4] p-8 rounded-xl shadow-lg border border-[#D6CBB2]">
+      <h3 class="text-2xl font-bold text-[#7EA0B7] mb-6 text-center">디스코그래피</h3>
+      <div class="relative">
+        <div id="album-carousel" class="flex overflow-x-auto snap-x snap-mandatory py-8 px-4 space-x-8 no-scrollbar"></div>
+        <button id="prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 bg-[#F8F4E3]/70 hover:bg-[#F8F4E3] rounded-full p-3 shadow-lg z-10 transition duration-300 transform hover:scale-110 focus:outline-none border border-[#D6CBB2]">
+          <i class="fas fa-chevron-left text-[#7EA0B7] w-6 h-6"></i>
+        </button>
+        <button id="next-btn" class="absolute right-0 top-1/2 -translate-y-1/2 bg-[#F8F4E3]/70 hover:bg-[#F8F4E3] rounded-full p-3 shadow-lg z-10 transition duration-300 transform hover:scale-110 focus:outline-none border border-[#D6CBB2]">
+          <i class="fas fa-chevron-right text-[#7EA0B7] w-6 h-6"></i>
+        </button>
+      </div>
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 text-center md:text-left">
+        <div class="p-4 bg-[#EBE9D9] rounded-lg shadow-inner border border-[#D6CBB2]">
+          <h4 class="font-bold text-xl mb-2 text-[#7EA0B7]">음악적 특징</h4>
+          <p class="text-base text-[#3F3F3A] leading-relaxed">멤버 전원이 작사, 작곡, 프로듀싱, 안무 창작에 참여하는 '자체 제작돌'입니다. EDM, 힙합, R&B, 팝, 발라드 등 폭넓은 장르를 소화하며, 음악을 통해 자신들의 성장 서사와 팬들을 향한 진솔한 마음을 전달합니다.</p>
+        </div>
+        <div class="p-4 bg-[#EBE9D9] rounded-lg shadow-inner border border-[#D6CBB2]">
+          <h4 class="font-bold text-xl mb-2 text-[#9B7A9B]">제작 과정</h4>
+          <p class="text-base text-[#3F3F3A] leading-relaxed">국내외 유수의 프로듀서들과 협업하여 높은 퀄리티의 사운드를 구현합니다. 실제 멤버들의 목소리를 기반으로 하되, AI 음성 보조 기술을 활용하여 더욱 풍부하고 다채로운 보컬 표현을 완성합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="my-24 scroll-mt-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#3F3F3A]">활동 및 성과</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="bg-[#FCFBF4] rounded-xl p-8 shadow-lg transition duration-300 hover:shadow-xl border border-[#D6CBB2]">
+        <h3 class="text-xl font-bold text-[#7EA0B7] mb-4 flex items-center"><i class="fas fa-trophy mr-3 text-[#E0B0A0]"></i>주요 성과</h3>
+        <ul class="space-y-3 list-disc list-inside text-[#3F3F3A] text-base">
+          <li>MBC '쇼! 음악중심' 1위 ('WAY 4 LUV') <span class="font-sans text-xs text-[#6B6B61] font-medium">(버추얼 그룹 최초)</span></li>
+          <li>2024 K월드 드림 어워즈 '아이돌플러스 인기상'</li>
+          <li>2024 유니버설 슈퍼스타 어워즈 '유니버설 슈퍼 루키'</li>
+          <li>2023 한터뮤직어워즈 '특별상 (버추얼 아티스트)'</li>
+          <li>첫 팬 콘서트 'Hello, Asterum!' 전석 매진</li>
+          <li>데뷔 1주년 기념 팝업스토어 성료</li>
+        </ul>
+      </div>
+      <div class="bg-[#FCFBF4] rounded-xl p-8 shadow-lg transition duration-300 hover:shadow-xl border border-[#D6CBB2]">
+        <h3 class="text-xl font-bold text-[#7EA0B7] mb-4 flex items-center"><i class="fas fa-globe-americas mr-3 text-[#9B7A9B]"></i>세계관과 기술</h3>
+        <p class="text-base text-[#3F3F3A] leading-relaxed"><strong class="font-bold">블래스트(VLAST)</strong>의 혁신적인 기술력으로 탄생했습니다. 실시간 모션 캡처와 렌더링 기술은 멤버들의 생생한 표정과 움직임을 구현하며, 팬들에게 시공간을 초월한 소통 경험을 선사합니다.</p>
+        <p class="text-base text-[#3F3F3A] leading-relaxed mt-2"><strong class="font-bold text-[#9B7A9B]">카엘룸</strong>(멤버들의 본래 세계)과 <strong class="font-bold text-[#7EA0B7]">아스테룸</strong>(소통을 위한 중간 지대)을 오가는 서사는 음악, 뮤직비디오, 라이브 방송 등 모든 활동의 기반이 됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="for-plli" class="my-24 scroll-mt-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#3F3F3A]">플리를 위하여 (FOR PLLI)</h2>
+    <div class="bg-[#FCFBF4] rounded-xl p-8 shadow-lg border border-[#D6CBB2]">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="md:col-span-1 p-4 bg-[#EBE9D9] rounded-lg shadow-inner border border-[#D6CBB2]">
+          <h3 class="text-xl font-bold text-[#7EA0B7] mb-4">팬덤 '플리(PLLI)'</h3>
+          <p class="text-base text-[#3F3F3A] leading-relaxed">'PLAVE'와 'Reality'의 합성어로, 플레이브가 현실에 존재하게 하는 이유라는 의미를 담고 있습니다. 플레이브 성장의 가장 큰 원동력입니다.</p>
+        </div>
+        <div class="md:col-span-2 p-4 bg-[#EBE9D9] rounded-lg shadow-inner border border-[#D6CBB2]">
+          <h3 class="text-xl font-bold text-[#A04F5E] mb-4">소통 문화</h3>
+          <ul class="space-y-2 list-disc list-inside text-base text-[#3F3F3A]">
+            <li><strong>정기 라이브 방송:</strong> 주 2~3회 이상 유튜브를 통해 팬들과 실시간으로 소통하며 게임, 노래, 토크 등 다양한 콘텐츠를 진행합니다.</li>
+            <li><strong>2차 창작 활성화:</strong> 팬아트, 팬픽, 커버 영상 등 팬들의 자발적인 2차 창작이 매우 활발하며, 멤버들이 이를 직접 언급하고 응원하며 유대감을 형성합니다.</li>
+            <li><strong>팬 참여형 콘텐츠:</strong> 팬들이 직접 스토리를 제안하는 '세계관 확장 프로젝트', 라이브 중 실시간 의견을 반영한 콘텐츠 제작 등 적극적인 소통이 특징입니다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 그룹별 캐러셀 포토 갤러리 -->
+  <section id="gallery" class="my-24 scroll-mt-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#3F3F3A]">PLAVE 포토 갤러리</h2>
+    <div class="relative max-w-4xl mx-auto">
+      <div id="photo-carousel" class="overflow-hidden"></div>
+      <button id="photo-prev" class="absolute left-0 top-1/2 -translate-y-1/2 bg-[#F8F4E3]/80 hover:bg-[#F8F4E3] rounded-full p-3 shadow-lg z-10 transition duration-300 border border-[#D6CBB2]">
+        <i class="fas fa-chevron-left text-[#7EA0B7] w-6 h-6"></i>
+      </button>
+      <button id="photo-next" class="absolute right-0 top-1/2 -translate-y-1/2 bg-[#F8F4E3]/80 hover:bg-[#F8F4E3] rounded-full p-3 shadow-lg z-10 transition duration-300 border border-[#D6CBB2]">
+        <i class="fas fa-chevron-right text-[#7EA0B7] w-6 h-6"></i>
+      </button>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-[#EBE9D9] border-t border-[#D6CBB2] mt-24">
+  <div class="container mx-auto px-6 py-8 text-center text-[#6B6B61]">
+    <p>&copy; 2025 PLAVE Fan Page. All rights reserved.</p>
+    <p class="text-xs mt-2">이 페이지는 팬에 의해 제작되었으며, 비공식 페이지입니다.</p>
+  </div>
+</footer>
+
+<!-- 멤버 상세 모달 -->
+<div id="member-modal" class="fixed inset-0 bg-[#3F3F3A]/70 hidden items-center justify-center p-4 z-50 modal-backdrop opacity-0">
+  <div id="modal-content" class="bg-[#FCFBF4] rounded-2xl shadow-2xl w-full max-w-sm max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 modal-content relative border border-[#D6CBB2]"></div>
+</div>
+
+<script>
+const members = [
+  {
+    id: 'yejun', name: '예준', en_name: 'Yejun', animal: 'src/동물_돌고래.ico',
+    photo: 'src/포스터_예준.png',
+    position: '리더, 메인보컬', birthday: '09.12',
+    description: '팀의 중심을 잡는 리더이자 감미로운 목소리의 소유자. 작사, 작곡에도 능한 만능 프로듀서.',
+    details: '부드럽고 깊은 감성의 보컬로 곡의 분위기를 이끌며, 앨범 제작 전반을 총괄하는 역할을 맡습니다. 팬들과의 소통에 적극적이며, 카엘룸 내 희망과 꿈을 상징합니다.',
+    stats: { '보컬': 95, '프로듀싱': 90, '리더십': 100, '비주얼': 85 }
+  },
+  {
+    id: 'noah', name: '노아', en_name: 'Noah', animal: 'src/동물_알파카.ico',
+    photo: 'src/포스터_노아.png',
+    position: '리드보컬', birthday: '02.10',
+    description: '청량하고 맑은 음색이 매력적인 보컬. 뛰어난 춤 실력과 무대 위 재치를 겸비한 분위기 메이커.',
+    details: '맑고 청아한 음색으로 스토리텔링에 강점을 보입니다. 보컬 디렉팅에 참여하며 고음 파트를 주로 담당합니다. 현실과 가상 세계를 잇는 다리 역할을 합니다.',
+    stats: { '보컬': 90, '댄스': 85, '예능감': 95, '비주얼': 90 }
+  },
+  {
+    id: 'bamby', name: '밤비', en_name: 'Bamby', animal: 'src/동물_사슴.ico',
+    photo: 'src/포스터_밤비.png',
+    position: '메인댄서, 보컬', birthday: '07.15',
+    description: '귀엽고 사랑스러운 매력과 파워풀한 댄스 실력의 반전 매력. 팬들을 향한 애정이 남다르다.',
+    details: '뛰어난 리듬감과 무대 매너로 퍼포먼스의 중심을 잡습니다. 안무 제작과 무대 연출에 아이디어를 제공하며, 자유로운 영혼과 도전을 상징합니다.',
+    stats: { '댄스': 100, '보컬': 80, '애교': 95, '비주얼': 90 }
+  },
+  {
+    id: 'eunho', name: '은호', en_name: 'Eunho', animal: 'src/동물_늑대.ico',
+    photo: 'src/포스터_은호.png',
+    position: '메인래퍼, 보컬', birthday: '05.24',
+    description: '날카롭고 정확한 래핑과 중저음의 매력적인 보컬. 음악에 대한 깊은 이해를 바탕으로 작곡에 참여한다.',
+    details: '강렬한 랩과 사회적 메시지를 담은 가사로 깊은 울림을 줍니다. 랩 메이킹과 프로듀싱에 참여하며, 현실 비판과 내면 성찰의 메시지를 상징합니다.',
+    stats: { '랩': 100, '프로듀싱': 85, '카리스마': 90, '보컬': 80 }
+  },
+  {
+    id: 'hamin', name: '하민', en_name: 'Hamin', animal: 'src/동물_고양이.ico',
+    photo: 'src/포스터_하민.png',
+    position: '리드래퍼, 메인댄서', birthday: '11.01',
+    description: '팀의 막내이자 압도적인 피지컬을 자랑하는 퍼포머. 태권도 유단자로, 절도 있는 춤선이 특징.',
+    details: '감각적인 리듬감과 분위기 메이킹에 탁월한 래퍼입니다. 음악 편곡과 사운드 디자인에 협업하며, 내면의 갈등과 성장의 서사를 담당합니다.',
+    stats: { '댄스': 95, '랩': 85, '피지컬': 100, '무대 장악력': 90 }
+  }
+];
+
+const albums = [
+  { title: "기다릴게", type: "Digital Single", date: "2023.03.12", track: "기다릴게", img: "src/CD키링_기다릴게_CD_cover.png" },
+  { title: "Merry PLLIstmas", type: "Digital Single", date: "2023.12.12", track: "Merry PLLIstmas", img: "src/CD키링_메리플리_CD_cover.png" },
+  { title: "왜요왜요왜", type: "Digital Single", date: "2024.05.31", track: "왜요왜요왜", img: "src/CD키링_왜요왜요왜_CD_cover.png" },
+  { title: "여섯 번째 여름", type: "1st Mini Album", date: "2023.08.24", track: "여섯 번째 여름", img: "src/CD키링_여섯번째여름_CD_cover.png" },
+  { title: "Pump Up The Volume!", type: "Digital Single", date: "2024.05.31", track: "Pump Up The Volume!", img: "src/CD키링_PUTV_CD_cover.png" },
+  { title: "WAY 4 LUV", type: "2nd Mini Album", date: "2024.02.26", track: "WAY 4 LUV", img: "src/CD키링_WAY4LUV_CD_cover.png" }
+];
+
+// 멤버 카드 생성
+const memberCards = document.getElementById('member-cards');
+members.forEach(member => {
+  const card = document.createElement('div');
+  card.className = 'member-card bg-[#FCFBF4] rounded-xl p-6 shadow-lg text-center border border-[#D6CBB2] hover:shadow-xl transition duration-300';
+  card.innerHTML = `
+    <img src="${member.photo}" alt="${member.name} 사진" class="a4-photo mx-auto mb-3 border border-[#D6CBB2] rounded-lg bg-[#EBE9D9]" />
+    <img src="${member.animal}" alt="${member.name} 동물 아이콘" class="member-animal" />
+    <h3 class="text-xl font-bold mb-1">${member.name} <span class="text-xs text-[#7EA0B7] font-poppins">(${member.en_name})</span></h3>
+    <div class="text-sm text-[#A04F5E] mb-2">${member.position}</div>
+    <div class="text-xs text-[#6B6B61] mb-2">생일: ${member.birthday}</div>
+    <div class="text-base mb-2">${member.description}</div>
+  `;
+  card.addEventListener('click', () => openMemberModal(member));
+  memberCards.appendChild(card);
+});
+
+// 멤버 상세 모달
+const modal = document.getElementById('member-modal');
+const modalContent = document.getElementById('modal-content');
+function openMemberModal(member) {
+  modalContent.innerHTML = `
+    <button id="close-modal" class="absolute top-4 right-4 text-[#B0A499] hover:text-[#A04F5E] transition duration-200 focus:outline-none">
+      <i class="fas fa-times fa-lg"></i>
+    </button>
+    <div class="text-center p-6">
+      <img src="${member.photo}" alt="${member.name} 사진" class="a4-photo mx-auto mb-3 border border-[#D6CBB2] rounded-lg bg-[#EBE9D9]" />
+      <img src="${member.animal}" alt="${member.name} 동물 아이콘" class="member-animal" />
+      <h3 class="text-2xl font-bold mb-1">${member.name} <span class="text-xs text-[#7EA0B7] font-poppins">(${member.en_name})</span></h3>
+      <div class="text-sm text-[#A04F5E] mb-2">${member.position}</div>
+      <div class="text-xs text-[#6B6B61] mb-2">생일: ${member.birthday}</div>
+      <div class="text-base mb-2">${member.details}</div>
+      <div class="mt-4 text-left">
+        <h4 class="font-bold mb-2 text-[#7EA0B7]">능력치</h4>
+        <ul class="space-y-1">
+          ${Object.entries(member.stats).map(([key, val]) => `<li><span class="font-bold">${key}</span>: ${val}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `;
+  modal.classList.remove('hidden');
+  setTimeout(() => modal.classList.remove('opacity-0'), 10);
+}
+modal.addEventListener('click', e => {
+  if (e.target === modal || e.target.id === 'close-modal') {
+    modal.classList.add('opacity-0');
+    setTimeout(() => modal.classList.add('hidden'), 300);
+  }
+});
+
+// 앨범 캐러셀
+const albumCarousel = document.getElementById('album-carousel');
+albums.forEach(album => {
+  const item = document.createElement('div');
+  item.className = 'flex-shrink-0 snap-center w-64 bg-[#EBE9D9] rounded-2xl shadow-md p-5 flex flex-col items-center text-center border border-[#D6CBB2]';
+  item.innerHTML = `
+    <div class="cd-frame mb-4 cd-spin">
+      <img src="${album.img}" alt="${album.title}" class="cd-img" />
+      <div class="cd-hole"></div>
+    </div>
+    <h4 class="font-bold text-lg mb-1">${album.title}</h4>
+    <div class="text-xs text-[#7EA0B7] mb-1">${album.type}</div>
+    <div class="text-xs text-[#6B6B61] mb-2">${album.date}</div>
+    <div class="text-base font-medium">${album.track}</div>
+  `;
+  albumCarousel.appendChild(item);
+});
+document.getElementById('prev-btn').onclick = () => {
+  albumCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+}
+document.getElementById('next-btn').onclick = () => {
+  albumCarousel.scrollBy({ left: 300, behavior: 'smooth' });
+}
+
+// 모바일 메뉴
+const mobileMenuBtn = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuBtn.onclick = () => {
+  mobileMenu.classList.toggle('hidden');
+};
+document.querySelectorAll('.mobile-menu-link').forEach(link => {
+  link.onclick = () => mobileMenu.classList.add('hidden');
+});
+
+// 포토 갤러리 그룹 캐러셀 (세 번째 그룹 최신화)
+const photoGroups = [
+  [
+    "src/5명-누움_노아.png",
+    "src/5명-누움_예준.png",
+    "src/5명-누움_은호.png",
+    "src/5명-누움_밤비.png",
+    "src/5명-누움_하민.png",
+    "src/5명-누움.png"
+  ],
+  [
+    "src/unnamed (6).webp",
+    "src/unnamed (7).webp",
+    "src/unnamed (8).webp",
+    "src/unnamed (9).webp",
+    "src/unnamed (10).webp",
+    "src/unnamed (11).webp"
+  ],
+  [
+    "src/unnamed (2).webp",
+    "src/unnamed (16).webp",
+    "src/unnamed (15).webp",
+    "src/unnamed (18).webp",
+    "src/unnamed (19).webp",
+    "src/unnamed (21).webp",
+    "src/unnamed (20).webp",
+    "src/unnamed (22).webp"
+  ],
+  [
+    "src/1.webp",
+    "src/2.webp",
+    "src/3.webp",
+    "src/4.webp",
+    "src/5.webp"
+  ]
+];
+
+const photoCarousel = document.getElementById('photo-carousel');
+let photoGroupIndex = 0;
+function renderPhotoGroup(idx) {
+  photoCarousel.innerHTML = `
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 transition-all duration-500">
+      ${photoGroups[idx].map(src => `
+        <img src="${src}" alt="PLAVE" class="w-full h-auto rounded-xl object-cover" loading="lazy">
+      `).join('')}
+    </div>
+    <div class="flex justify-center mt-4 gap-2">
+      ${photoGroups.map((_, i) => `
+        <span class="inline-block w-3 h-3 rounded-full ${i===idx ? 'bg-[#7EA0B7]' : 'bg-[#D6CBB2]'}"></span>
+      `).join('')}
+    </div>
+  `;
+}
+renderPhotoGroup(photoGroupIndex);
+document.getElementById('photo-prev').onclick = () => {
+  photoGroupIndex = (photoGroupIndex - 1 + photoGroups.length) % photoGroups.length;
+  renderPhotoGroup(photoGroupIndex);
+};
+document.getElementById('photo-next').onclick = () => {
+  photoGroupIndex = (photoGroupIndex + 1) % photoGroups.length;
+  renderPhotoGroup(photoGroupIndex);
+};
+</script>
 </body>
 </html>
