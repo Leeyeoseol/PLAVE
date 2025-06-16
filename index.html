@@ -2,174 +2,164 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>PLAVE 이미지 테스트</title>
+  <title>PLAVE 팬페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="src/동물_돌고래.ico">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: #f8fafc; font-family: sans-serif; }
-    .img-wrap { display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0; }
-    .img-box { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px #0001; padding: 16px; text-align: center; }
-    .img-box img { border-radius: 8px; width: 180px; height: 180px; object-fit: cover; background: #eee; }
-    .img-box span { display: block; margin-top: 8px; font-size: 14px; color: #444; }
+    body { font-family: sans-serif; }
   </style>
 </head>
-<body>
-  <h1>PLAVE 이미지 경로 테스트</h1>
-  <div class="img-wrap">
-    <div class="img-box">
-      <img src="src/1.webp" alt="1.webp">
-      <span>1.webp</span>
+<body class="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 min-h-screen">
+  <!-- 헤더 -->
+  <header class="bg-white/80 backdrop-blur shadow sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto flex items-center justify-between px-4 py-2">
+      <div class="flex items-center space-x-2">
+        <img src="src/플브-백.png" alt="플레이브 로고" class="h-10 w-10 rounded-full shadow object-cover">
+        <span class="text-xl font-bold text-purple-600">PLAVE 팬페이지</span>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-base font-semibold">
+        <a href="#members" class="hover:text-purple-500">멤버</a>
+        <a href="#albums" class="hover:text-purple-500">앨범</a>
+        <a href="#news" class="hover:text-purple-500">소식</a>
+        <a href="#contact" class="hover:text-purple-500">문의</a>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden p-2 rounded hover:bg-purple-100 transition">
+        <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
-    <div class="img-box">
-      <img src="src/2.webp" alt="2.webp">
-      <span>2.webp</span>
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-3">
+      <a href="#members" class="block py-2 text-base font-semibold hover:text-purple-500">멤버</a>
+      <a href="#albums" class="block py-2 text-base font-semibold hover:text-purple-500">앨범</a>
+      <a href="#news" class="block py-2 text-base font-semibold hover:text-purple-500">소식</a>
+      <a href="#contact" class="block py-2 text-base font-semibold hover:text-purple-500">문의</a>
     </div>
-    <div class="img-box">
-      <img src="src/3. 밤비.gif" alt="3. 밤비.gif">
-      <span>3. 밤비.gif</span>
-    </div>
-    <div class="img-box">
-      <img src="src/3.webp" alt="3.webp">
-      <span>3.webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/4.webp" alt="4.webp">
-      <span>4.webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/포스터_예준.png" alt="포스터_예준.png">
-      <span>포스터_예준.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/플브-백.png" alt="플브-백.png">
-      <span>플브-백.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/5명-누움_노아.png" alt="5명-누움_노아.png">
-      <span>5명-누움_노아.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/5명-누움_밤비.png" alt="5명-누움_밤비.png">
-      <span>5명-누움_밤비.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/5명-누움_예준.png" alt="5명-누움_예준.png">
-      <span>5명-누움_예준.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/5명-누움_은호.png" alt="5명-누움_은호.png">
-      <span>5명-누움_은호.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/5명-누움_하민.png" alt="5명-누움_하민.png">
-      <span>5명-누움_하민.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/5명-누움.png" alt="5명-누움.png">
-      <span>5명-누움.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/240704_메디힐 배경화면.png" alt="240704_메디힐 배경화면.png">
-      <span>240704_메디힐 배경화면.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/칼리고-단체-배경화먼3-1.png" alt="칼리고-단체-배경화먼3-1.png">
-      <span>칼리고-단체-배경화먼3-1.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/컨포B-배경화면.png" alt="컨포B-배경화면.png">
-      <span>컨포B-배경화면.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/PLAVE_01.png" alt="PLAVE_01.png">
-      <span>PLAVE_01.png</span>
-    </div>
-    <div class="img-box">
-      <img src="src/page.jpg" alt="page.jpg">
-      <span>page.jpg</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (1).webp" alt="unnamed (1).webp">
-      <span>unnamed (1).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (2).webp" alt="unnamed (2).webp">
-      <span>unnamed (2).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (4).webp" alt="unnamed (4).webp">
-      <span>unnamed (4).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (5).webp" alt="unnamed (5).webp">
-      <span>unnamed (5).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (6).webp" alt="unnamed (6).webp">
-      <span>unnamed (6).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (7).webp" alt="unnamed (7).webp">
-      <span>unnamed (7).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (8).webp" alt="unnamed (8).webp">
-      <span>unnamed (8).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (9).webp" alt="unnamed (9).webp">
-      <span>unnamed (9).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (10).webp" alt="unnamed (10).webp">
-      <span>unnamed (10).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (11).webp" alt="unnamed (11).webp">
-      <span>unnamed (11).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (14).webp" alt="unnamed (14).webp">
-      <span>unnamed (14).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (15).webp" alt="unnamed (15).webp">
-      <span>unnamed (15).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (16).webp" alt="unnamed (16).webp">
-      <span>unnamed (16).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (17).webp" alt="unnamed (17).webp">
-      <span>unnamed (17).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (18).webp" alt="unnamed (18).webp">
-      <span>unnamed (18).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (19).webp" alt="unnamed (19).webp">
-      <span>unnamed (19).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (20).webp" alt="unnamed (20).webp">
-      <span>unnamed (20).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (21).webp" alt="unnamed (21).webp">
-      <span>unnamed (21).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed (22).webp" alt="unnamed (22).webp">
-      <span>unnamed (22).webp</span>
-    </div>
-    <div class="img-box">
-      <img src="src/unnamed.webp1.webp" alt="unnamed.webp1.webp">
-      <span>unnamed.webp1.webp</span>
-    </div>
-  </div>
-  <p style="color:#888; font-size:13px; margin:30px 0 0 10px;">
-    ※ Netlify에선 반드시 <b>src 폴더와 파일명</b>이 정확히 맞아야 이미지를 볼 수 있습니다.
-  </p>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- 소개 -->
+    <section class="text-center mb-12">
+      <img src="src/플브-백.png" alt="플레이브 전체 로고" class="mx-auto w-28 h-28 rounded-full object-cover shadow-lg border-4 border-purple-200 mb-4">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-purple-700 mb-2">플레이브(PLAVE) 팬페이지</h1>
+      <p class="text-base md:text-lg text-gray-700 mb-2">
+        가상 아이돌 그룹 <span class="font-bold text-purple-600">PLAVE</span>의 멤버, 앨범, 최신 소식까지 한눈에!
+      </p>
+    </section>
+
+    <!-- 멤버 -->
+    <section id="members" class="mb-14">
+      <h2 class="text-2xl font-bold text-purple-700 mb-5 text-center">멤버 소개</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
+        <div class="rounded-xl shadow-lg p-5 flex flex-col items-center bg-blue-50/70">
+          <img src="src/포스터_예준.png" alt="예준" class="w-24 h-24 rounded-full object-cover border-2 border-white mb-2">
+          <div class="font-bold text-purple-700">예준</div>
+          <div class="text-sm text-gray-600 mb-1">리더 · 메인보컬</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 flex flex-col items-center bg-yellow-50/70">
+          <img src="src/포스터_노아.png" alt="노아" class="w-24 h-24 rounded-full object-cover border-2 border-white mb-2">
+          <div class="font-bold text-purple-700">노아</div>
+          <div class="text-sm text-gray-600 mb-1">메인댄서 · 서브보컬</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 flex flex-col items-center bg-green-50/70">
+          <img src="src/포스터_밤비.png" alt="밤비" class="w-24 h-24 rounded-full object-cover border-2 border-white mb-2">
+          <div class="font-bold text-purple-700">밤비</div>
+          <div class="text-sm text-gray-600 mb-1">메인래퍼 · 서브보컬</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 flex flex-col items-center bg-pink-50/70">
+          <img src="src/포스터_은호.png" alt="은호" class="w-24 h-24 rounded-full object-cover border-2 border-white mb-2">
+          <div class="font-bold text-purple-700">은호</div>
+          <div class="text-sm text-gray-600 mb-1">서브보컬 · 리드댄서</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 flex flex-col items-center bg-purple-50/70">
+          <img src="src/포스터_하민.png" alt="하민" class="w-24 h-24 rounded-full object-cover border-2 border-white mb-2">
+          <div class="font-bold text-purple-700">하민</div>
+          <div class="text-sm text-gray-600 mb-1">서브래퍼 · 막내</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 앨범 -->
+    <section id="albums" class="mb-14">
+      <h2 class="text-2xl font-bold text-purple-700 mb-5 text-center">앨범</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
+        <div class="rounded-xl shadow-lg p-5 bg-white/90 flex flex-col items-center">
+          <img src="src/CD키링_기다릴게_CD_cover.png" alt="기다릴게" class="w-20 h-20 rounded-lg object-cover border-2 border-purple-200 mb-2">
+          <div class="font-bold text-purple-700">기다릴게</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 bg-white/90 flex flex-col items-center">
+          <img src="src/CD키링_메리플리_CD_cover.png" alt="메리플리" class="w-20 h-20 rounded-lg object-cover border-2 border-purple-200 mb-2">
+          <div class="font-bold text-purple-700">메리플리</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 bg-white/90 flex flex-col items-center">
+          <img src="src/CD키링_여섯번째여름_CD_cover.png" alt="여섯번째여름" class="w-20 h-20 rounded-lg object-cover border-2 border-purple-200 mb-2">
+          <div class="font-bold text-purple-700">여섯번째여름</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 bg-white/90 flex flex-col items-center">
+          <img src="src/CD키링_왜요왜요왜_CD_cover.png" alt="왜요왜요왜" class="w-20 h-20 rounded-lg object-cover border-2 border-purple-200 mb-2">
+          <div class="font-bold text-purple-700">왜요왜요왜</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 bg-white/90 flex flex-col items-center">
+          <img src="src/CD키링_PUTV_CD_cover.png" alt="PUTV" class="w-20 h-20 rounded-lg object-cover border-2 border-purple-200 mb-2">
+          <div class="font-bold text-purple-700">PUTV</div>
+        </div>
+        <div class="rounded-xl shadow-lg p-5 bg-white/90 flex flex-col items-center">
+          <img src="src/CD키링_WAY4LUV_CD_cover.png" alt="WAY4LUV" class="w-20 h-20 rounded-lg object-cover border-2 border-purple-200 mb-2">
+          <div class="font-bold text-purple-700">WAY4LUV</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 소식 -->
+    <section id="news" class="mb-14">
+      <h2 class="text-2xl font-bold text-purple-700 mb-5 text-center">최신 소식</h2>
+      <ul class="space-y-3 text-gray-800 text-base">
+        <li>
+          <span class="text-purple-500 font-bold">2025.06</span> PLAVE 정규 2집 발매!
+        </li>
+        <li>
+          <span class="text-purple-500 font-bold">2025.05</span> 팬미팅 <b>PLAVE with YOU</b> 성황리 종료!
+        </li>
+        <li>
+          <span class="text-purple-500 font-bold">2025.04</span> 공식 굿즈 2차 판매 시작!
+        </li>
+      </ul>
+    </section>
+
+    <!-- 문의 -->
+    <section id="contact" class="mb-10">
+      <h2 class="text-2xl font-bold text-purple-700 mb-5 text-center">문의하기</h2>
+      <form action="mailto:plavefanpage@email.com" method="POST" enctype="text/plain" class="max-w-md mx-auto bg-white/70 rounded-lg shadow p-6 space-y-3">
+        <div>
+          <label for="name" class="block font-semibold text-gray-700 mb-1">이름</label>
+          <input type="text" id="name" name="name" required class="w-full border border-purple-200 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300">
+        </div>
+        <div>
+          <label for="email" class="block font-semibold text-gray-700 mb-1">이메일</label>
+          <input type="email" id="email" name="email" required class="w-full border border-purple-200 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300">
+        </div>
+        <div>
+          <label for="message" class="block font-semibold text-gray-700 mb-1">문의 내용</label>
+          <textarea id="message" name="message" rows="3" required class="w-full border border-purple-200 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 rounded transition">보내기</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-purple-100 text-center py-3 text-gray-600 text-xs">
+    &copy; 2025 PLAVE 팬페이지 | 팬이 만든 비공식 사이트입니다.
+  </footer>
+
+  <script>
+    // 모바일 메뉴 토글
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
