@@ -14,59 +14,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* Custom Styles */
     html { scroll-behavior: smooth; }
     body { font-family: 'Noto Sans KR', sans-serif; background-color: #F8F4E3; color: #3F3F3A; }
     .font-poppins { font-family: 'Poppins', sans-serif; }
     .cd-spin { animation: spin 12s linear infinite; }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    
     .modal-backdrop { transition: opacity 0.3s ease; }
     .modal-content { transition: transform 0.3s ease, opacity 0.3s ease; }
-    
     .member-card { cursor: pointer; transition: all 0.3s ease-in-out; }
     .member-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    
     .hero-background { position: relative; overflow: hidden; }
     .hero-bg-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
     .hero-background::before { content: ""; position: absolute; inset: 0; background: rgba(63, 63, 58, 0.4); backdrop-filter: blur(2px) sepia(0.2); z-index: 1; }
     .hero-content { position: relative; z-index: 2; color: #FDFCF8; }
-    
     .a4-photo { aspect-ratio: 210 / 297; width: 100%; object-fit: cover; }
-    
     .cd-frame { position: relative; width: 10rem; height: 10rem; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
     .cd-img { width: 100%; height: 100%; border-radius: 9999px; object-fit: cover; border: 4px solid #FCFBF4; box-sizing: border-box; z-index: 1; }
     .cd-hole { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 2rem; height: 2rem; background: #F8F4E3; border-radius: 9999px; z-index: 2; box-shadow: 0 0 0 2px #D6CBB2 inset; }
-    
     .member-animal-icon { width: 36px; height: 36px; object-fit: contain; display: inline-block; margin-bottom: 0.5rem; }
-    
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-    /* Custom color classes for member themes */
     .bg-yejun-light { background-color: rgba(126, 160, 183, 0.1); }
     .border-yejun { border-color: #7EA0B7; }
     .text-yejun { color: #7EA0B7; }
     .progress-yejun { background-image: linear-gradient(to right, #A8C0D0, #7EA0B7); }
-
     .bg-noah-light { background-color: rgba(155, 122, 155, 0.1); }
     .border-noah { border-color: #9B7A9B; }
     .text-noah { color: #9B7A9B; }
     .progress-noah { background-image: linear-gradient(to right, #B99FBA, #9B7A9B); }
-
     .bg-bamby-light { background-color: rgba(224, 176, 160, 0.1); }
     .border-bamby { border-color: #E0B0A0; }
     .text-bamby { color: #A04F5E; }
     .progress-bamby { background-image: linear-gradient(to right, #E8C8BE, #E0B0A0); }
-
     .bg-eunho-light { background-color: rgba(224, 122, 122, 0.1); }
     .border-eunho { border-color: #C66D6D; }
     .text-eunho { color: #B34B4B; }
     .progress-eunho { background-image: linear-gradient(to right, #D89898, #C66D6D); }
-
     .bg-hamin-light { background-color: rgba(140, 140, 140, 0.1); }
     .border-hamin { border-color: #8C8C8C; }
     .text-hamin { color: #6F6F6F; }
@@ -77,8 +63,7 @@
 <header class="bg-[#F8F4E3]/90 backdrop-blur-sm sticky top-0 z-50 shadow-md border-b border-[#D6CBB2]">
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
     <a href="#" class="flex items-center space-x-3">
-        <!-- Logo path updated -->
-        <img src="src/플브-백.png" alt="PLAVE 로고" class="h-12 w-12 md:h-14 md:w-14 object-cover rounded-lg shadow-sm">
+        <img src="/assets/플브-백.png" alt="PLAVE 로고" class="h-12 w-12 md:h-14 md:w-14 object-cover rounded-lg shadow-sm">
         <h1 class="hidden sm:block text-2xl md:text-3xl font-bold text-[#3F3F3A] font-poppins tracking-wider hover:text-[#7EA0B7] transition duration-300">
             PL<span class="text-[#7EA0B7]">A</span>VE
         </h1>
@@ -104,8 +89,7 @@
 <main class="container mx-auto px-6 py-12">
 
   <section class="hero-background text-center my-16 rounded-3xl overflow-hidden p-0 shadow-xl min-h-[450px] flex items-center justify-center">
-    <!-- Background image path updated -->
-    <img src="src/240704_메디힐 배경화면.png" alt="플레이브 단체 사진" class="hero-bg-image" draggable="false" />
+    <img src="/assets/240704_메디힐 배경화면.png" alt="플레이브 단체 사진" class="hero-bg-image" draggable="false" />
     <div class="hero-content flex flex-col items-center justify-center px-4">
       <h2 class="text-4xl md:text-6xl font-black font-poppins mb-4 drop-shadow-lg">WE ARE <span class="text-[#E0B0A0]">PLAVE!</span></h2>
       <p class="text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-md">플레이브는 현실 세계의 팬 '플리(PLLI)'와 소통하기 위해 가상 세계 '카엘룸'에서 온 5명의 버추얼 아이돌입니다. 그들의 음악, 세계관, 그리고 끝나지 않는 이야기를 탐험해보세요.</p>
@@ -183,37 +167,37 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // --- DATA (Image paths updated to relative paths) ---
+    // --- DATA (Image paths updated to /assets/) ---
     const members = [
-        { id: 'yejun', name: '예준', en_name: 'Yejun', animal_icon: 'src/동물_돌고래.ico', photo: 'src/포스터_예준.png', color_class: 'yejun', position: '리더, 메인보컬', birthday: '09.12', description: '팀의 중심을 잡는 리더이자 감미로운 목소리의 소유자. 작사, 작곡에도 능한 만능 프로듀서.', details: '부드럽고 깊은 감성의 보컬로 곡의 분위기를 이끌며, 앨범 제작 전반을 총괄하는 역할을 맡습니다. 팬들과의 소통에 적극적이며, 카엘룸 내 희망과 꿈을 상징합니다.', stats: { '보컬': 95, '프로듀싱': 90, '리더십': 100, '비주얼': 85 } },
-        { id: 'noah', name: '노아', en_name: 'Noah', animal_icon: 'src/동물_알파카.ico', photo: 'src/포스터_노아.png', color_class: 'noah', position: '리드보컬', birthday: '02.10', description: '청량하고 맑은 음색이 매력적인 보컬. 뛰어난 춤 실력과 무대 위 재치를 겸비한 분위기 메이커.', details: '맑고 청아한 음색으로 스토리텔링에 강점을 보입니다. 보컬 디렉팅에 참여하며 고음 파트를 주로 담당합니다. 현실과 가상 세계를 잇는 다리 역할을 합니다.', stats: { '보컬': 90, '댄스': 85, '예능감': 95, '비주얼': 90 } },
-        { id: 'bamby', name: '밤비', en_name: 'Bamby', animal_icon: 'src/동물_사슴.ico', photo: 'src/포스터_밤비.png', color_class: 'bamby', position: '메인댄서, 보컬', birthday: '07.15', description: '귀엽고 사랑스러운 매력과 파워풀한 댄스 실력의 반전 매력. 팬들을 향한 애정이 남다르다.', details: '뛰어난 리듬감과 무대 매너로 퍼포먼스의 중심을 잡습니다. 안무 제작과 무대 연출에 아이디어를 제공하며, 자유로운 영혼과 도전을 상징합니다.', stats: { '댄스': 100, '보컬': 80, '애교': 95, '비주얼': 90 } },
-        { id: 'eunho', name: '은호', en_name: 'Eunho', animal_icon: 'src/동물_늑대.ico', photo: 'src/포스터_은호.png', color_class: 'eunho', position: '메인래퍼, 보컬', birthday: '05.24', description: '날카롭고 정확한 래핑과 중저음의 매력적인 보컬. 음악에 대한 깊은 이해를 바탕으로 작곡에 참여한다.', details: '강렬한 랩과 사회적 메시지를 담은 가사로 깊은 울림을 줍니다. 랩 메이킹과 프로듀싱에 참여하며, 현실 비판과 내면 성찰의 메시지를 상징합니다.', stats: { '랩': 100, '프로듀싱': 85, '카리스마': 90, '보컬': 80 } },
-        { id: 'hamin', name: '하민', en_name: 'Hamin', animal_icon: 'src/동물_고양이.ico', photo: 'src/포스터_하민.png', color_class: 'hamin', position: '리드래퍼, 메인댄서', birthday: '11.01', description: '팀의 막내이자 압도적인 피지컬을 자랑하는 퍼포머. 태권도 유단자로, 절도 있는 춤선이 특징.', details: '감각적인 리듬감과 분위기 메이킹에 탁월한 래퍼입니다. 음악 편곡과 사운드 디자인에 협업하며, 내면의 갈등과 성장의 서사를 담당합니다.', stats: { '댄스': 95, '랩': 85, '피지컬': 100, '무대 장악력': 90 } }
+        { id: 'yejun', name: '예준', en_name: 'Yejun', animal_icon: '/assets/동물_돌고래.ico', photo: '/assets/포스터_예준.png', color_class: 'yejun', position: '리더, 메인보컬', birthday: '09.12', description: '팀의 중심을 잡는 리더이자 감미로운 목소리의 소유자. 작사, 작곡에도 능한 만능 프로듀서.', details: '부드럽고 깊은 감성의 보컬로 곡의 분위기를 이끌며, 앨범 제작 전반을 총괄하는 역할을 맡습니다. 팬들과의 소통에 적극적이며, 카엘룸 내 희망과 꿈을 상징합니다.', stats: { '보컬': 95, '프로듀싱': 90, '리더십': 100, '비주얼': 85 } },
+        { id: 'noah', name: '노아', en_name: 'Noah', animal_icon: '/assets/동물_알파카.ico', photo: '/assets/포스터_노아.png', color_class: 'noah', position: '리드보컬', birthday: '02.10', description: '청량하고 맑은 음색이 매력적인 보컬. 뛰어난 춤 실력과 무대 위 재치를 겸비한 분위기 메이커.', details: '맑고 청아한 음색으로 스토리텔링에 강점을 보입니다. 보컬 디렉팅에 참여하며 고음 파트를 주로 담당합니다. 현실과 가상 세계를 잇는 다리 역할을 합니다.', stats: { '보컬': 90, '댄스': 85, '예능감': 95, '비주얼': 90 } },
+        { id: 'bamby', name: '밤비', en_name: 'Bamby', animal_icon: '/assets/동물_사슴.ico', photo: '/assets/포스터_밤비.png', color_class: 'bamby', position: '메인댄서, 보컬', birthday: '07.15', description: '귀엽고 사랑스러운 매력과 파워풀한 댄스 실력의 반전 매력. 팬들을 향한 애정이 남다르다.', details: '뛰어난 리듬감과 무대 매너로 퍼포먼스의 중심을 잡습니다. 안무 제작과 무대 연출에 아이디어를 제공하며, 자유로운 영혼과 도전을 상징합니다.', stats: { '댄스': 100, '보컬': 80, '애교': 95, '비주얼': 90 } },
+        { id: 'eunho', name: '은호', en_name: 'Eunho', animal_icon: '/assets/동물_늑대.ico', photo: '/assets/포스터_은호.png', color_class: 'eunho', position: '메인래퍼, 보컬', birthday: '05.24', description: '날카롭고 정확한 래핑과 중저음의 매력적인 보컬. 음악에 대한 깊은 이해를 바탕으로 작곡에 참여한다.', details: '강렬한 랩과 사회적 메시지를 담은 가사로 깊은 울림을 줍니다. 랩 메이킹과 프로듀싱에 참여하며, 현실 비판과 내면 성찰의 메시지를 상징합니다.', stats: { '랩': 100, '프로듀싱': 85, '카리스마': 90, '보컬': 80 } },
+        { id: 'hamin', name: '하민', en_name: 'Hamin', animal_icon: '/assets/동물_고양이.ico', photo: '/assets/포스터_하민.png', color_class: 'hamin', position: '리드래퍼, 메인댄서', birthday: '11.01', description: '팀의 막내이자 압도적인 피지컬을 자랑하는 퍼포머. 태권도 유단자로, 절도 있는 춤선이 특징.', details: '감각적인 리듬감과 분위기 메이킹에 탁월한 래퍼입니다. 음악 편곡과 사운드 디자인에 협업하며, 내면의 갈등과 성장의 서사를 담당합니다.', stats: { '댄스': 95, '랩': 85, '피지컬': 100, '무대 장악력': 90 } }
     ];
     
     const albums = [
-        { title: "기다릴게", type: "Digital Single", date: "2023.03.12", img: "src/CD키링_기다릴게_CD_cover.png" },
-        { title: "여섯 번째 여름", type: "1st Mini Album", date: "2023.08.24", img: "src/CD키링_여섯번째여름_CD_cover.png" },
-        { title: "Merry PLLIstmas", type: "Digital Single", date: "2023.12.12", img: "src/CD키링_메리플리_CD_cover.png" },
-        { title: "WAY 4 LUV", type: "2nd Mini Album", date: "2024.02.26", img: "src/CD키링_WAY4LUV_CD_cover.png" },
-        { title: "Pump Up The Volume!", type: "Digital Single", date: "2024.05.31", img: "src/CD키링_PUTV_CD_cover.png" },
-        { title: "왜요왜요왜", type: "Digital Single", date: "2024.05.31", img: "src/CD키링_왜요왜요왜_CD_cover.png" },
+        { title: "기다릴게", type: "Digital Single", date: "2023.03.12", img: "/assets/CD키링_기다릴게_CD_cover.png" },
+        { title: "여섯 번째 여름", type: "1st Mini Album", date: "2023.08.24", img: "/assets/CD키링_여섯번째여름_CD_cover.png" },
+        { title: "Merry PLLIstmas", type: "Digital Single", date: "2023.12.12", img: "/assets/CD키링_메리플리_CD_cover.png" },
+        { title: "WAY 4 LUV", type: "2nd Mini Album", date: "2024.02.26", img: "/assets/CD키링_WAY4LUV_CD_cover.png" },
+        { title: "Pump Up The Volume!", type: "Digital Single", date: "2024.05.31", img: "/assets/CD키링_PUTV_CD_cover.png" },
+        { title: "왜요왜요왜", type: "Digital Single", date: "2024.05.31", img: "/assets/CD키링_왜요왜요왜_CD_cover.png" },
     ];
     
     const photoGroups = [
         [
-            "src/5명-누움_노아.png", "src/5명-누움_밤비.png", "src/5명-누움_예준.png",
-            "src/5명-누움_은호.png", "src/5명-누움_하민.png", "src/5명-누움.png"
+            "/assets/5명-누움_노아.png", "/assets/5명-누움_밤비.png", "/assets/5명-누움_예준.png",
+            "/assets/5명-누움_은호.png", "/assets/5명-누움_하민.png", "/assets/5명-누움.png"
         ],
         [
-            "src/unnamed (6).webp", "src/unnamed (7).webp", "src/unnamed (8).webp",
-            "src/unnamed (9).webp", "src/unnamed (10).webp", "src/unnamed (11).webp"
+            "/assets/unnamed (6).webp", "/assets/unnamed (7).webp", "/assets/unnamed (8).webp",
+            "/assets/unnamed (9).webp", "/assets/unnamed (10).webp", "/assets/unnamed (11).webp"
         ],
         [
-            "src/unnamed (14).webp", "src/unnamed (15).webp", "src/unnamed (16).webp",
-            "src/unnamed (17).webp", "src/unnamed (18).webp", "src/unnamed (19).webp",
-            "src/unnamed (20).webp"
+            "/assets/unnamed (14).webp", "/assets/unnamed (15).webp", "/assets/unnamed (16).webp",
+            "/assets/unnamed (17).webp", "/assets/unnamed (18).webp", "/assets/unnamed (19).webp",
+            "/assets/unnamed (20).webp"
         ]
     ];
     // --- RENDER FUNCTIONS ---
